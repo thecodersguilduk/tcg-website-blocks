@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tcg/author",
+	"version": "1.0.0",
+	"title": "TCG Author",
+	"category": "tcg",
+	"icon": "id-alt",
+	"description": "\"Written by\" box for the post's author: photo, name, job title, bio and LinkedIn, all taken from their WordPress profile.",
+	"keywords": [ "author", "bio", "written by", "tcg" ],
+	"textdomain": "tcg-blocks",
+	"usesContext": [ "postId" ],
+	"supports": { "html": false, "multiple": false, "reusable": false },
+	"editorScript": "file:./index.js",
+	"style": "file:./style.css",
+	"render": "file:./render.php"
+}

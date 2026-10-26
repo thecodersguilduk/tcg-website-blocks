@@ -1,0 +1,66 @@
+/* TCG Author block: "Written by" card.
+   White card, soft shadow, rounded square photo left, text right:
+   small "Written by", semibold navy name, semibold red job title,
+   bio, red LinkedIn icon. Navy #3A405A, Red #E4200A, Poppins. */
+.tcg-author {
+	display: flex;
+	flex-wrap: wrap; /* text drops under the photo when the card is narrow */
+	align-items: center;
+	gap: clamp(1.25rem, 4vw, 2.25rem);
+	margin: 3em 0;
+	padding: clamp(1.25rem, 3vw, 1.75rem) clamp(1.25rem, 3vw, 2rem);
+	background: #fff;
+	border-radius: 20px;
+	box-shadow: 0 4px 24px rgba(58, 64, 90, 0.1);
+	font-family: 'Poppins', sans-serif;
+	color: #3A405A;
+}
+
+.tcg-author__photo {
+	flex: 0 0 clamp(104px, 26%, 150px);
+	aspect-ratio: 1 / 1;
+	border-radius: 16px;
+	overflow: hidden;
+	background: rgba(58, 64, 90, 0.08);
+}
+.tcg-author__photo img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 0;
+	margin: 0;
+}
+
+.tcg-author__body { flex: 1 1 15rem; min-width: 0; }
+.tcg-author__body p { margin: 0; color: inherit; }
+
+.tcg-author__body .tcg-author__label { font-size: 0.8rem; font-weight: 400; line-height: 1.4; }
+.tcg-author__body .tcg-author__name { margin-top: 0.15rem; font-size: 1.05rem; font-weight: 600; line-height: 1.3; }
+/* Red on white is 4.7:1: passes AA at this weight. */
+.tcg-author__body .tcg-author__role { margin-top: 0.25rem; font-size: 0.8rem; font-weight: 600; line-height: 1.4; color: #E4200A; }
+
+.tcg-author__bio { margin-top: 0.85rem; font-size: 0.85rem; font-weight: 400; line-height: 1.6; }
+.tcg-author__body .tcg-author__bio p + p { margin-top: 0.6em; }
+
+.tcg-author__linkedin {
+	display: inline-flex;
+	margin-top: 0.75rem;
+	color: #E4200A;
+	text-decoration: none;
+	line-height: 1;
+	border-radius: 3px;
+}
+.tcg-author__linkedin:hover { color: #B81A08; }
+.tcg-author__linkedin:focus-visible { outline: 2px solid #E4200A; outline-offset: 3px; }
+.tcg-author__linkedin .dashicons { width: 22px; height: 22px; font-size: 22px; }
+
+.tcg-author__sr {
+	position: absolute !important;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	white-space: nowrap;
+}

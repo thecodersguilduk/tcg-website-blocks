@@ -3,7 +3,7 @@ Contributors: thecodersguild
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.3.0
+Stable tag: 1.4.0
 License: GPLv2 or later
 
 The Coders Guild's custom Gutenberg blocks and content styles for thecodersguild.org.uk.
@@ -11,6 +11,7 @@ The Coders Guild's custom Gutenberg blocks and content styles for thecodersguild
 == Description ==
 
 * TCG Quote block: testimonial with photo, name and role.
+* TCG Author block: "Written by" box built from the post author's profile, also available as [tcg_author].
 * Content styles for core blocks: lists, tables, quotes, pullquotes, FAQs (Details), code, images and cover blocks. Loaded on the site and in the post editor.
 * Callout styles for the Group block: red, navy and sand.
 * Syntax highlighting for Code blocks (highlight.js, bundled).
@@ -18,6 +19,11 @@ The Coders Guild's custom Gutenberg blocks and content styles for thecodersguild
 * Updates are delivered from GitHub releases.
 
 == Changelog ==
+
+= 1.4.0 =
+* New TCG Author block: photo, name, job title, bio and LinkedIn from the post author's WordPress profile. Nothing is stored in the post, so profile edits show everywhere.
+* New Author box section on user profiles: job title, LinkedIn URL and photo (the bio is Biographical Info).
+* New [tcg_author] shortcode, to put the author box in the Elementor single-post template.
 
 = 1.3.0 =
 * New [tcg_block] shortcode to show a synced pattern (by id or slug) in Elementor's Shortcode widget. The Patterns list gains a Shortcode column.

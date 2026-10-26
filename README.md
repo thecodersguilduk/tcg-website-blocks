@@ -7,6 +7,7 @@ The Coders Guild's custom Gutenberg blocks and content styles for [thecodersguil
 | Part | Where |
 |---|---|
 | **TCG Quote** block: testimonial with photo, name, role | `blocks/quote/` |
+| **TCG Author** block: "Written by" box from the post author's profile, plus `[tcg_author]` and the profile fields | `blocks/author/`, `includes/author.php` |
 | Content styles for core blocks: lists, tables, quotes, pullquotes, FAQs (Details), code, images, cover | `assets/css/content.css` |
 | Callout styles on the Group block: *Callout (red / navy / sand)* | registered in `tcg-blocks.php`, styled in `content.css` |
 | Code block syntax highlighting (highlight.js 11.11.1, bundled) | `assets/js/`, `assets/css/code-theme.css` |
@@ -52,6 +53,13 @@ No build step: plain JS using `window.wp.*` globals. Dependencies are listed in 
 - **FAQs:** consecutive Details blocks join into one navy panel.
 - **Code:** use the standard Code block; the language is detected automatically.
 - **Tables:** use a header row (`thead`) and add a caption; tables scroll sideways on small screens.
+
+## Author box
+
+The **TCG Author** block is dynamic: it saves nothing in the post and builds the box from the post author's profile each time, so fixing a bio fixes every post.
+
+- **Set up each author** in *Users → Profile*: *Biographical Info* is the bio; the *Author box* section has job title, LinkedIn URL and photo (square, 280px+; falls back to Gravatar).
+- **Show it** either per post (insert *TCG Author*) or on every post at once by putting `[tcg_author]` in a Shortcode widget in the Elementor single-post template. Use one or the other, or posts will show it twice.
 
 ## Using blocks in Elementor
 
