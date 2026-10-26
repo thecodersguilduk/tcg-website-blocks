@@ -10,6 +10,7 @@ The Coders Guild's custom Gutenberg blocks and content styles for [thecodersguil
 | Content styles for core blocks: lists, tables, quotes, pullquotes, FAQs (Details), code, images, cover | `assets/css/content.css` |
 | Callout styles on the Group block: *Callout (red / navy / sand)* | registered in `tcg-blocks.php`, styled in `content.css` |
 | Code block syntax highlighting (highlight.js 11.11.1, bundled) | `assets/js/`, `assets/css/code-theme.css` |
+| `[tcg_block]` shortcode: synced patterns inside Elementor | `includes/pattern-shortcode.php` |
 | GitHub update checker (Plugin Update Checker 5.7, bundled) | `vendor/plugin-update-checker/` |
 
 Brand tokens: Navy `#3A405A`, Red `#E4200A`, Teal `#218380`, Sand `#F2D0A4`. Poppins 300/400/500/600.
@@ -51,3 +52,12 @@ No build step: plain JS using `window.wp.*` globals. Dependencies are listed in 
 - **FAQs:** consecutive Details blocks join into one navy panel.
 - **Code:** use the standard Code block; the language is detected automatically.
 - **Tables:** use a header row (`thead`) and add a caption; tables scroll sideways on small screens.
+
+## Using blocks in Elementor
+
+Gutenberg blocks don't appear in Elementor's widget panel, and Elementor's Text Editor widget is the classic editor, not blocks. There are two routes:
+
+- **Blog posts:** nothing to do. The single-post template's *Post Content* widget renders the post's blocks with all the styles above.
+- **Elementor pages:** build the content once as a **synced pattern** in the block editor (select the blocks, then ⋮ → *Create pattern*, with *Synced* on). Then add Elementor's **Shortcode** widget and paste `[tcg_block id="123"]`. The Patterns list (`wp-admin/edit.php?post_type=wp_block`) has a *Shortcode* column to copy from; `[tcg_block slug="pattern-slug"]` works too.
+
+Editing the pattern updates every page that shows it. Only published patterns render; logged-in editors see a notice if the id or slug is wrong, visitors see nothing.

@@ -33,25 +33,25 @@ h3.wp-block-heading { font-size: clamp(1.35rem, 2vw, 1.75rem); }
 h4.wp-block-heading { font-size: clamp(1.15rem, 1.5vw, 1.3rem); }
 
 /* --------------------------------------------------------------------------
-   Links and inline code inside post content
+   Links and inline code inside post content and [tcg_block] embeds
    -------------------------------------------------------------------------- */
-:is(.elementor-widget-theme-post-content, .editor-styles-wrapper) :is(p, li, td, th, figcaption, cite) a:not(.elementor-button) {
+:is(.elementor-widget-theme-post-content, .tcg-block-embed, .editor-styles-wrapper) :is(p, li, td, th, figcaption, cite) a:not(.elementor-button) {
   color: var(--tcg-red);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
 }
-:is(.elementor-widget-theme-post-content, .editor-styles-wrapper) :is(p, li, td, th, figcaption, cite) a:not(.elementor-button):hover {
+:is(.elementor-widget-theme-post-content, .tcg-block-embed, .editor-styles-wrapper) :is(p, li, td, th, figcaption, cite) a:not(.elementor-button):hover {
   color: var(--tcg-red-dark);
   text-decoration-thickness: 2px;
 }
-:is(.elementor-widget-theme-post-content, .editor-styles-wrapper) a:focus-visible,
-:is(.elementor-widget-theme-post-content, .editor-styles-wrapper) summary:focus-visible {
+:is(.elementor-widget-theme-post-content, .tcg-block-embed, .editor-styles-wrapper) a:focus-visible,
+:is(.elementor-widget-theme-post-content, .tcg-block-embed, .editor-styles-wrapper) summary:focus-visible {
   outline: 2px solid var(--tcg-red);
   outline-offset: 3px;
   border-radius: 2px;
 }
-:is(.elementor-widget-theme-post-content, .editor-styles-wrapper) :not(pre) > code {
+:is(.elementor-widget-theme-post-content, .tcg-block-embed, .editor-styles-wrapper) :not(pre) > code {
   background: var(--tcg-navy);
   color: #fff;
   padding: 0.12em 0.45em;
@@ -241,7 +241,20 @@ figure.wp-block-table {
 .wp-block-group:is(.tcg-callout, [class*="is-style-tcg-callout"]) :is(p, li, h2, h3, h4, strong) { color: inherit; }
 .wp-block-group:is(.tcg-callout, [class*="is-style-tcg-callout"]) p { margin: 0 0 0.6em; }
 .wp-block-group:is(.tcg-callout, [class*="is-style-tcg-callout"]) > :last-child { margin-bottom: 0; }
-.wp-block-group:is(.tcg-callout, [class*="is-style-tcg-callout"]) a { color: inherit; text-decoration: underline; }
+/* Links, list markers and inline code take the callout's text colour. The
+   doubled class out-ranks the red link, red bullet and navy code rules above. */
+.wp-block-group.wp-block-group:is(.tcg-callout, [class*="is-style-tcg-callout"]) a,
+.wp-block-group.wp-block-group:is(.tcg-callout, [class*="is-style-tcg-callout"]) a:hover {
+  color: inherit;
+  text-decoration: underline;
+}
+.wp-block-group.wp-block-group:is(.tcg-callout, [class*="is-style-tcg-callout"]) a:hover { text-decoration-thickness: 2px; }
+.wp-block-group.wp-block-group:is(.tcg-callout, [class*="is-style-tcg-callout"]) ul.wp-block-list > li::before { background: currentColor; }
+.wp-block-group.wp-block-group:is(.tcg-callout, [class*="is-style-tcg-callout"]) ol.wp-block-list > li::before { color: inherit; }
+.wp-block-group.wp-block-group:is(.tcg-callout, [class*="is-style-tcg-callout"]):not(:is(.tcg-callout--sand, .is-style-tcg-callout-sand)) :not(pre) > code {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
 
 /* --------------------------------------------------------------------------
    Code block: dark panel
