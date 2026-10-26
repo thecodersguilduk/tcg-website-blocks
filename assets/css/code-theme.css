@@ -1,0 +1,40 @@
+/* TCG code colours for highlight.js, matched to the Figma code panel.
+   The dark panel itself is styled in content.css (pre.wp-block-code). */
+pre.wp-block-code code.hljs { background: none; color: #e8e8e8; padding: 0; }
+.hljs-comment,
+.hljs-quote { color: #7f848e; font-style: italic; }
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-doctag { color: #c678dd; }
+.hljs-string,
+.hljs-regexp,
+.hljs-template-string,
+.hljs-meta .hljs-string { color: #e5a35b; }
+.hljs-number,
+.hljs-literal { color: #d19a66; }
+.hljs-built_in,
+.hljs-type,
+.hljs-class .hljs-title,
+.hljs-title.class_ { color: #56b6c2; }
+.hljs-title,
+.hljs-title.function_,
+.hljs-section { color: #61afef; }
+.hljs-attr,
+.hljs-attribute,
+.hljs-property,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-params { color: #e06c75; }
+.hljs-name,
+.hljs-tag,
+.hljs-selector-id,
+.hljs-selector-class { color: #e06c75; }
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link,
+.hljs-meta { color: #56b6c2; }
+.hljs-subst { color: #e8e8e8; }
+.hljs-emphasis { font-style: italic; }
+.hljs-strong { font-weight: 700; }
+.hljs-deletion { color: #e06c75; }
+.hljs-addition { color: #98c379; }

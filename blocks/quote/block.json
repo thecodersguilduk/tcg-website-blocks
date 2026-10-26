@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tcg/quote",
+	"version": "1.1.0",
+	"title": "TCG Quote",
+	"category": "tcg",
+	"icon": "format-quote",
+	"description": "Quote with photo, name, role and an optional description line.",
+	"keywords": [ "quote", "testimonial", "tcg" ],
+	"textdomain": "tcg-quote-block",
+	"attributes": {
+		"name":        { "type": "string", "source": "html", "selector": ".tcg-quote__name" },
+		"role":        { "type": "string", "source": "html", "selector": ".tcg-quote__role" },
+		"description": { "type": "string", "source": "html", "selector": ".tcg-quote__desc" },
+		"imageId":     { "type": "number" },
+		"imageUrl":    { "type": "string", "source": "attribute", "selector": ".tcg-quote__photo img", "attribute": "src" },
+		"imageAlt":    { "type": "string", "source": "attribute", "selector": ".tcg-quote__photo img", "attribute": "alt", "default": "" }
+	},
+	"supports": { "html": false, "align": [ "wide", "full" ] },
+	"editorScript": "file:./index.js",
+	"style": "file:./style.css"
+}
