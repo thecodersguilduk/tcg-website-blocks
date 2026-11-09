@@ -3,7 +3,7 @@
  * Plugin Name:       TCG Blocks
  * Plugin URI:        https://github.com/thecodersguilduk/tcg-website-blocks
  * Description:       The Coders Guild's custom Gutenberg blocks and content styles. Every folder in /blocks with a block.json is registered automatically. Updates are delivered from GitHub releases.
- * Version:           1.4.0
+ * Version:           1.4.1
  * Requires at least: 6.5
  * Requires PHP:      7.4
  * Author:            The Coders Guild
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'TCG_BLOCKS_VERSION', '1.4.0' );
+define( 'TCG_BLOCKS_VERSION', '1.4.1' );
 define( 'TCG_BLOCKS_URL', plugin_dir_url( __FILE__ ) );
 define( 'TCG_BLOCKS_DIR', plugin_dir_path( __FILE__ ) );
 

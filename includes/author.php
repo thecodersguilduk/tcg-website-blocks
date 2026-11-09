@@ -125,6 +125,13 @@ add_shortcode( 'tcg_author', function () {
 	if ( ! WP_Block_Type_Registry::get_instance()->is_registered( 'tcg/author' ) ) {
 		return '';
 	}
+	// Visitors only see the box once the author has written a bio, so posts by
+	// someone with an unfinished profile don't show a half-empty card. Editors
+	// always see it, as a reminder to fill the profile in.
+	$author_id = (int) get_post_field( 'post_author', get_the_ID() );
+	if ( ! current_user_can( 'edit_posts' ) && '' === trim( (string) get_user_meta( $author_id, 'description', true ) ) ) {
+		return '';
+	}
 	// render_block() also loads the block's stylesheet.
 	return render_block( array(
 		'blockName'    => 'tcg/author',

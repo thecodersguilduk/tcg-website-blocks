@@ -16,6 +16,7 @@
   --tcg-tint: rgba(58, 64, 90, 0.06);
   --tcg-row-a: #EEEEEE;                 /* table zebra rows, from the Figma */
   --tcg-row-b: #F1F4F9;
+  --tcg-measure: 50ch;                  /* line length: at most ~14 words per line */
   --tcg-line: rgba(58, 64, 90, 0.85);
   --tcg-muted: rgba(58, 64, 90, 0.75);
 }
@@ -33,6 +34,16 @@
 h2.wp-block-heading { font-size: clamp(1.75rem, 3vw, 2.6rem); }
 h3.wp-block-heading { font-size: clamp(1.35rem, 2vw, 1.75rem); }
 h4.wp-block-heading { font-size: clamp(1.15rem, 1.5vw, 1.3rem); }
+
+/* --------------------------------------------------------------------------
+   Line length: body paragraphs and lists stop at --tcg-measure so no line
+   runs past about 14 words (measured on real posts in Poppins: 50ch never
+   exceeded 14, average 11). Tables, callouts, quotes, code, images and FAQs
+   keep the full column width, as in the Figma.
+   -------------------------------------------------------------------------- */
+:is(.elementor-widget-theme-post-content, .editor-styles-wrapper) :is(p, ul.wp-block-list, ol.wp-block-list):not(:is(.wp-block-cover, .wp-block-quote, .wp-block-pullquote, .wp-block-group, .wp-block-details, .wp-block-table, .tcg-quote, .tcg-author, .tcg-block-embed) *):not(.has-text-align-center, .has-text-align-right) {
+  max-width: var(--tcg-measure);
+}
 
 /* --------------------------------------------------------------------------
    Links and inline code inside post content and [tcg_block] embeds

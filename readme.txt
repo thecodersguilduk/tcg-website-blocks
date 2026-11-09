@@ -3,7 +3,7 @@ Contributors: thecodersguild
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: GPLv2 or later
 
 The Coders Guild's custom Gutenberg blocks and content styles for thecodersguild.org.uk.
@@ -19,6 +19,11 @@ The Coders Guild's custom Gutenberg blocks and content styles for thecodersguild
 * Updates are delivered from GitHub releases.
 
 == Changelog ==
+
+= 1.4.1 =
+* Line length: body paragraphs and lists are capped at 50ch, so no line runs past about 14 words. Change --tcg-measure in content.css to adjust.
+* Author box is centred and capped at 54rem, for use below the post content in the Elementor Article Template ([tcg_author] in a Shortcode widget).
+* [tcg_author] stays hidden from visitors until the author has a bio (Users → Profile → Biographical Info). Logged-in editors always see it.
 
 = 1.4.0 =
 * New TCG Author block: photo, name, job title, bio and LinkedIn from the post author's WordPress profile. Nothing is stored in the post, so profile edits show everywhere.
