@@ -1,6 +1,6 @@
 /* ==========================================================================
    The Coders Guild: content block styles
-   Source: Figma "Coders Guild – Blog Mock Up", frame "One Column – v2"
+   Source: Figma "Coders Guild – Blog Mock Up", frame "One Column – v3"
    Part of the TCG Blocks plugin. Loaded on the site and inside the post editor.
    Applies to WordPress block-editor (Gutenberg) content anywhere on the site.
    Every rule targets a core block class (.wp-block-*), so Elementor menus,
@@ -13,7 +13,9 @@
   --tcg-red-dark: #B81A08;
   --tcg-teal: #218380;
   --tcg-sand: #F2D0A4;
-  --tcg-tint: rgba(58, 64, 90, 0.06);   /* zebra rows: navy tint, no greys */
+  --tcg-tint: rgba(58, 64, 90, 0.06);
+  --tcg-row-a: #EEEEEE;                 /* table zebra rows, from the Figma */
+  --tcg-row-b: #F1F4F9;
   --tcg-line: rgba(58, 64, 90, 0.85);
   --tcg-muted: rgba(58, 64, 90, 0.75);
 }
@@ -111,7 +113,8 @@ ol.wp-block-list ol.wp-block-list > li::before {
 }
 
 /* --------------------------------------------------------------------------
-   Tables: teal header, zebra rows, rounded frame, scroll on narrow screens
+   Tables (Figma v3): navy header, grey / pale-blue zebra rows, thin white
+   lines between cells, rounded corners, scroll on narrow screens
    -------------------------------------------------------------------------- */
 figure.wp-block-table {
   margin: 2em 0;
@@ -123,32 +126,39 @@ figure.wp-block-table {
   min-width: 480px;
   border-collapse: separate;
   border-spacing: 0;
-  border: 1px solid var(--tcg-line);
-  border-radius: 12px;
+  border: 0;
+  border-radius: 8px;
   overflow: hidden;
-  font-size: 0.95em;
+  font-size: 0.9em;
+  line-height: 1.45;
   color: var(--tcg-navy);
 }
 .wp-block-table table :is(th, td) {
   border: 0;
-  border-top: 1px solid var(--tcg-line);
-  border-right: 1px solid var(--tcg-line);
-  padding: 0.85em 1em;
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
+  padding: 0.95em 1.2em;
   text-align: left;
-  vertical-align: top;
+  vertical-align: middle;
 }
 .wp-block-table table tr > :last-child { border-right: 0; }
+.wp-block-table table :is(thead, tbody, tfoot):first-child tr:first-child > * { border-top: 0; }
 .wp-block-table table thead th {
-  background: var(--tcg-teal);
+  background: var(--tcg-navy);
   color: #fff;
+  font-weight: 500;
+  text-align: center;
+}
+.wp-block-table table tbody tr:nth-child(odd) { background: var(--tcg-row-a); }
+.wp-block-table table tbody tr:nth-child(even) { background: var(--tcg-row-b); }
+.wp-block-table table tbody th[scope="row"],
+.wp-block-table table tbody th {
   font-weight: 600;
   text-align: center;
-  border-top: 0;
-  border-right-color: rgba(255, 255, 255, 0.35);
 }
-.wp-block-table table:not(:has(thead)) tbody tr:first-child > * { border-top: 0; }
-.wp-block-table table tbody tr:nth-child(odd) { background: var(--tcg-tint); }
-.wp-block-table table tbody th[scope="row"] { font-weight: 600; text-align: center; }
+/* WordPress's own "Stripes" table style: let ours win. */
+.wp-block-table.is-style-stripes tbody tr:nth-child(odd) { background: var(--tcg-row-a); }
+.wp-block-table.is-style-stripes { border-bottom: 0; }
 .wp-block-table figcaption {
   margin-top: 0.6em;
   font-size: 0.85em;
@@ -157,69 +167,44 @@ figure.wp-block-table {
 }
 
 /* --------------------------------------------------------------------------
-   Quote (with attribution): big centred navy text, red slanted marks
+   Quote and pullquote (Figma v3): very large centred semibold navy text with
+   red slanted quote marks. The pullquote isn't in the Figma, so it takes the
+   same look; posts that already use it stay on-brand.
    -------------------------------------------------------------------------- */
-.wp-block-quote,
-.wp-block-quote.is-style-large {
+:is(.wp-block-quote, .wp-block-quote.is-style-large, .wp-block-pullquote) {
   border: 0;
-  margin: 2.5em auto;
+  margin: 2.5em 0;
   padding: 0;
-  max-width: 46rem;
   text-align: center;
 }
-.wp-block-quote p {
-  margin: 0 0 0.4em;
-  font-size: clamp(1.45rem, 2.6vw, 2.2rem);
+.wp-block-pullquote blockquote { margin: 0; padding: 0; border: 0; }
+:is(.wp-block-quote, .wp-block-pullquote) p {
+  margin: 0 0 0.3em;
+  font-size: clamp(1.9rem, 4vw, 3.4rem);
   font-weight: 600;
   font-style: normal;
-  line-height: 1.3;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
   color: var(--tcg-navy);
 }
-.wp-block-quote > p:first-of-type::before {
+:is(.wp-block-quote, .wp-block-pullquote blockquote) > p:first-of-type::before {
   content: "\201C";
   color: var(--tcg-red);
   font-style: italic;
   margin-right: 0.05em;
 }
-.wp-block-quote > p:last-of-type::after {
+:is(.wp-block-quote, .wp-block-pullquote blockquote) > p:last-of-type::after {
   content: "\201D";
   color: var(--tcg-red);
   font-style: italic;
   margin-left: 0.05em;
 }
-.wp-block-quote cite {
+:is(.wp-block-quote, .wp-block-pullquote) cite {
   display: block;
-  margin-top: 0.9em;
+  margin-top: 1.2em;
   font-size: 0.8rem;
   font-style: normal;
-  color: var(--tcg-muted);
-}
-
-/* --------------------------------------------------------------------------
-   Pullquote (no attribution). Not in the Figma: kept clearly different from
-   the quote above with teal rules instead of quote marks.
-   -------------------------------------------------------------------------- */
-.wp-block-pullquote {
-  margin: 2.5em 0;
-  padding: 1.6em 0;
-  border: 0;
-  border-top: 3px solid var(--tcg-teal);
-  border-bottom: 3px solid var(--tcg-teal);
-  text-align: left;
-}
-.wp-block-pullquote blockquote { margin: 0; padding: 0; border: 0; }
-.wp-block-pullquote p {
-  margin: 0;
-  font-size: clamp(1.3rem, 2.2vw, 1.8rem);
-  font-weight: 600;
-  line-height: 1.35;
-  color: var(--tcg-navy);
-}
-.wp-block-pullquote cite {
-  display: block;
-  margin-top: 0.8em;
-  font-size: 0.8rem;
-  font-style: normal;
+  line-height: 1.4;
   color: var(--tcg-muted);
 }
 
@@ -231,15 +216,20 @@ figure.wp-block-table {
    -------------------------------------------------------------------------- */
 .wp-block-group:is(.tcg-callout, .is-style-tcg-callout, .is-style-tcg-callout-navy, .is-style-tcg-callout-sand) {
   margin: 2em 0;
-  padding: 1.2em 1.5em;
-  border-radius: 8px;
+  padding: 1.1em 1.4em;
+  border-radius: 6px;
   background: var(--tcg-red);
   color: #fff;
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  line-height: 1.5;
 }
 .wp-block-group:is(.tcg-callout--navy, .is-style-tcg-callout-navy) { background: var(--tcg-navy); }
 .wp-block-group:is(.tcg-callout--sand, .is-style-tcg-callout-sand) { background: var(--tcg-sand); color: var(--tcg-navy); }
 .wp-block-group:is(.tcg-callout, [class*="is-style-tcg-callout"]) :is(p, li, h2, h3, h4, strong) { color: inherit; }
-.wp-block-group:is(.tcg-callout, [class*="is-style-tcg-callout"]) p { margin: 0 0 0.6em; }
+.wp-block-group:is(.tcg-callout, [class*="is-style-tcg-callout"]) :is(p, li) { margin: 0 0 0.6em; line-height: 1.5; }
+/* Elementor sets body text line-height in em, which inherits as a fixed px
+   value and squashes larger text. Unitless line-heights here fix that. */
+.wp-block-group:is(.tcg-callout, [class*="is-style-tcg-callout"]) :is(h2, h3, h4) { line-height: 1.25; }
 .wp-block-group:is(.tcg-callout, [class*="is-style-tcg-callout"]) > :last-child { margin-bottom: 0; }
 /* Links, list markers and inline code take the callout's text colour. The
    doubled class out-ranks the red link, red bullet and navy code rules above. */
@@ -261,13 +251,14 @@ figure.wp-block-table {
    -------------------------------------------------------------------------- */
 pre.wp-block-code {
   margin: 2em 0;
-  padding: 1.25em 1.5em;
+  padding: 1.75em 2em;
   border: 0;
-  border-radius: 8px;
-  background: #0d0d0d;
+  border-radius: 4px;
+  background: #000;
   color: #e8e8e8;
   font-size: 0.85em;
-  line-height: 1.6;
+  line-height: 1.65;
+  tab-size: 2;
   overflow-x: auto;
 }
 pre.wp-block-code code {

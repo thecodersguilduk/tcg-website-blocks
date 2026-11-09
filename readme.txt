@@ -24,6 +24,11 @@ The Coders Guild's custom Gutenberg blocks and content styles for thecodersguild
 * New TCG Author block: photo, name, job title, bio and LinkedIn from the post author's WordPress profile. Nothing is stored in the post, so profile edits show everywhere.
 * New Author box section on user profiles: job title, LinkedIn URL and photo (the bio is Biographical Info).
 * New [tcg_author] shortcode, to put the author box in the Elementor single-post template.
+* Author card matches the Figma (One Column v3): photo and "Written by" sit over the card's top edge.
+* Tables restyled to the Figma v3: navy header, grey and pale-blue zebra rows, thin white cell lines, rounded corners.
+* Quote text is much larger (up to 3.4rem), as in the Figma. Pullquotes now share the quote style, since the Figma has no separate pullquote.
+* Fix: callout text no longer has squashed line spacing (Elementor's em line-height was inheriting as a fixed pixel value).
+* Code blocks: pure black panel with more padding, as in the Figma.
 
 = 1.3.0 =
 * New [tcg_block] shortcode to show a synced pattern (by id or slug) in Elementor's Shortcode widget. The Patterns list gains a Shortcode column.

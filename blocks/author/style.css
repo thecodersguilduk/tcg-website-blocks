@@ -3,21 +3,31 @@
    small "Written by", semibold navy name, semibold red job title,
    bio, red LinkedIn icon. Navy #3A405A, Red #E4200A, Poppins. */
 .tcg-author {
+	position: relative;
+	isolation: isolate;
 	display: flex;
 	flex-wrap: wrap; /* text drops under the photo when the card is narrow */
-	align-items: center;
+	align-items: flex-start;
 	gap: clamp(1.25rem, 4vw, 2.25rem);
 	margin: 3em 0;
-	padding: clamp(1.25rem, 3vw, 1.75rem) clamp(1.25rem, 3vw, 2rem);
-	background: #fff;
-	border-radius: 20px;
-	box-shadow: 0 4px 24px rgba(58, 64, 90, 0.1);
+	padding: 0 clamp(1.25rem, 3vw, 2rem) clamp(1.75rem, 4vw, 3rem);
 	font-family: 'Poppins', sans-serif;
 	color: #3A405A;
 }
+/* The white card starts a little below the photo and "Written by", so both
+   sit over its top edge, as in the Figma (One Column – v3). */
+.tcg-author::before {
+	content: "";
+	position: absolute;
+	inset: clamp(1.5rem, 3.5vw, 2.5rem) 0 0;
+	z-index: -1;
+	background: #fff;
+	border-radius: 20px;
+	box-shadow: 0 4px 24px rgba(58, 64, 90, 0.1);
+}
 
 .tcg-author__photo {
-	flex: 0 0 clamp(104px, 26%, 150px);
+	flex: 0 0 clamp(104px, 28%, 200px);
 	aspect-ratio: 1 / 1;
 	border-radius: 16px;
 	overflow: hidden;
